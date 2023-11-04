@@ -25,11 +25,10 @@ If that's the case, you can install what you want from the following:
 * `ncdu`, a better du which automatically summarises things
 * `prettyping`, ping with graphs
 
-# Optional: Work/Personal
+# Optional: Work
 There are some tools I only use at work or on a personal machine.
 These also rely on [Homebrew](https://brew.sh/) but can be triggered with:
 `make work`
-`make personal`
 
 
 Customisations
