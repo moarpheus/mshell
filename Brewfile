@@ -40,7 +40,6 @@ cask 'secretive'
 
 # Browser corner
 cask 'firefox'
-cask 'google-chrome'
 
 # Better fonts for dev
 tap "homebrew/cask-fonts"
