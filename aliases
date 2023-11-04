@@ -62,7 +62,7 @@ alias rsync-update='rsync-copy --update'
 
 ## Super lazy-time update functions
 alias up-vim='git_update $HOME/.config/nvim'
-alias up-shell='git_update $HOME/.adshell'
+alias up-shell='git_update $HOME/.mshell'
 alias up-tmux='git_update $HOME/.tmux-config'
 alias up-all='up-vim && up-shell && up-tmux'
 

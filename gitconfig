@@ -10,12 +10,12 @@
   cl = clean -fd
   cleanup = "!git branch --merged | grep -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
   co = checkout
-  col="! source $HOME/.adshell/functions ; git_checkout_fzf"
-  com="! source $HOME/.adshell/functions ; git checkout $(_master_branch)"
+  col="! source $HOME/.mshell/functions ; git_checkout_fzf"
+  com="! source $HOME/.mshell/functions ; git checkout $(_master_branch)"
   copr = "!git fetch origin pull/$1/head:pr$1 && git checkout -q pr$1 && echo Switched to PR"
   cp = cherry-pick
-  d="! source $HOME/.adshell/functions && git_diff_fzf"
-  dc="! source $HOME/.adshell/functions && git_diff_fzf --cached"
+  d="! source $HOME/.mshell/functions && git_diff_fzf"
+  dc="! source $HOME/.mshell/functions && git_diff_fzf --cached"
   ff = merge --ff-only
   l = log --graph --pretty=format:'%<(10)%C(bold green)%h%C(reset) %><(16)%C(yellow)%ar%C(reset) %<(16)%C(blue)%an%Creset %C(auto)%d%C(reset) %s' --abbrev-commit
   ls = shortlog -sn
@@ -55,8 +55,8 @@
   autostash = true
 
 [core]
-  excludesfile = ~/.adshell/gitignore
-  attributesfile = ~/.adshell/gitattributes
+  excludesfile = ~/.mshell/gitignore
+  attributesfile = ~/.mshell/gitattributes
   pager = delta --dark --diff-so-fancy
 
 [commit]

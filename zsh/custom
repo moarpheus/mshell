@@ -2,7 +2,7 @@
 
 setopt HIST_IGNORE_DUPS
 
-ADZSH="$HOME/.adshell/zsh"
+ADZSH="$HOME/.mshell/zsh"
 FUNCTIONS="$ADZSH/functions"
 PLUGINS="$ADZSH/plugins"
 
@@ -53,7 +53,7 @@ setopt INTERACTIVECOMMENTS  # Ignore everything in a command from a hash to a ne
 source "$PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # Setup History
-export HISTFILE=~/.adshell/working/zsh_history
+export HISTFILE=~/.mshell/working/zsh_history
 export HISTSIZE=5000
 export SAVEHIST=5000
 setopt HIST_VERIFY
@@ -85,7 +85,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # Cache auto completions
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.adshell/working/zsh-cache
+zstyle ':completion:*' cache-path ~/.mshell/working/zsh-cache
 
 zstyle ':completion:*' format ' %F{yellow}%d%f'
 zstyle ':completion:*' group-name ''

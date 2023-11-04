@@ -3,7 +3,7 @@ function source_if_present(){
   [[ -f $file ]] && source "$file"
 }
 
-CONFIG_BASE=$HOME/.adshell
+CONFIG_BASE=$HOME/.mshell
 
 # Load Customisations for all shells
 source_if_present "$CONFIG_BASE/env"

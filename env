@@ -1,7 +1,7 @@
 # vim: ft=bash
 export NERDFONT=1
 export ANDROID_HOME=/usr/local/Cellar/android-sdk/
-export FZF_DEFAULT_COMMAND='rg --files --ignore-file ~/.adshell/rgignore'
+export FZF_DEFAULT_COMMAND='rg --files --ignore-file ~/.mshell/rgignore'
 export FZF_DEFAULT_OPTS="
 --layout=reverse
 --info=inline
@@ -20,7 +20,7 @@ export FZF_DEFAULT_OPTS="
 "
 
 # Add adshell/bin to the PATH
-export PATH=~/.adshell/bin:$PATH
+export PATH=~/.mshell/bin:$PATH
 
 # Add brew sbin to PATH
 if type brew > /dev/null 2>&1 || [[ -e /usr/local/bin/brew ]] ; then

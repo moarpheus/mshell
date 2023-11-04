@@ -22,35 +22,35 @@ install_dependencies() {
 
 append_git_config(){
   git_config="[include]
-  path = ~/.adshell/gitconfig"
+  path = ~/.mshell/gitconfig"
   append_to_file "$git_config" $HOME/.gitconfig
 }
 
 source_custom(){
-  source_cmd="source $HOME/.adshell/custom"
+  source_cmd="source $HOME/.mshell/custom"
 
   append_to_file "$source_cmd" $HOME/.bashrc
   append_to_file "$source_cmd" $HOME/.zshrc
 }
 
 symlink_ctags_config(){
-  ln -s ~/.adshell/ctags ~/.ctags
+  ln -s ~/.mshell/ctags ~/.ctags
 }
 
 symlink_gitignore(){
-  ln -s ~/.adshell/gitignore_global ~/.gitignore_global
+  ln -s ~/.mshell/gitignore_global ~/.gitignore_global
 }
 
 symlink_asdf_configs(){
-  ln -s ~/.adshell/asdf/asdfrc ~/.asdfrc
-  ln -s ~/.adshell/asdf/default-gems ~/.default-gems
-  ln -s ~/.adshell/asdf/default-npm-packages ~/.default-npm-packages
+  ln -s ~/.mshell/asdf/asdfrc ~/.asdfrc
+  ln -s ~/.mshell/asdf/default-gems ~/.default-gems
+  ln -s ~/.mshell/asdf/default-npm-packages ~/.default-npm-packages
 }
 
 symlink_configs(){
-  ln -s ~/.adshell/config/kitty ~/.config/
-  ln -s ~/.adshell/config/wezterm ~/.config/
-  ln -s ~/.adshell/config/vale.ini ~/.vale.ini
+  ln -s ~/.mshell/config/kitty ~/.config/
+  ln -s ~/.mshell/config/wezterm ~/.config/
+  ln -s ~/.mshell/config/vale.ini ~/.vale.ini
 }
 
 main(){

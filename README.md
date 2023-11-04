@@ -1,17 +1,17 @@
-Adshell
+Mshell
 =======
 
 Makes your Zsh (or Bash) environment just that little bit more awesome
 ----------------------------------------------------------------------
 
-Adshell is a collection of addition aliases, prompt setup and misc helpful things for POSIX shells.
+Mshell is a collection of addition aliases, prompt setup and misc helpful things for POSIX shells.
 Offers far far more on Zsh but will also offer better aliases and prompts for Bash.
 
 Installation
 ------------
 
 ```
-git clone https://github.com/AdamWhittingham/adshell --recursive ~/.adshell && ~/.adshell/install
+git clone https://github.com/moarpheus/mshell --recursive ~/.mshell && ~/.mshell/install
 ```
 
 ### Optional tools to install for more awesomeness
