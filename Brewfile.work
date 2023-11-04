@@ -3,4 +3,3 @@
 cask 'pgadmin4'
 cask 'postman'
 cask 'slack'
-cask 'tailscale'

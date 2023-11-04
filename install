@@ -14,7 +14,6 @@ install_dependencies() {
     brew bundle --no-lock -v
     echo
     echo "Common dependencies installed."
-    echo "Run `brew bundle --no-lock --file=Brewfile.personal` for additional personal laptop setup."
     echo "Run `brew bundle --no-lock --file=Brewfile.work` for additional work laptop setup."
   else
     echo "Brew not found- please install dependencies manually. See the README.md"

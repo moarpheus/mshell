@@ -37,7 +37,6 @@ cask 'monitorcontrol'
 cask 'obsidian'
 cask 'rectangle'
 cask 'secretive'
-cask 'spotify'
 
 # Browser corner
 cask 'firefox'
