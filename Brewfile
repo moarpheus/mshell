@@ -1,5 +1,5 @@
 # Essential dev tools
-# brew 'curl'
+brew 'curl'
 brew 'fzf'
 brew 'git'
 brew 'jq'
