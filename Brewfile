@@ -3,10 +3,10 @@ brew 'curl'
 brew 'fzf'
 brew 'git'
 brew 'jq'
-brew 'neovim'
-brew 'tmux'
+# brew 'neovim'
+# brew 'tmux'
 brew 'watch'
-cask 'wezterm'
+# cask 'wezterm'
 
 # Better terminal tools
 brew 'bat'
@@ -29,14 +29,12 @@ brew 'vale'
 brew 'watch'
 
 # Generally useful apps
-cask '1password'
+# cask '1password'
 cask 'alfred'
-cask 'flameshot'
-cask 'keybase'
-cask 'monitorcontrol'
+# cask 'flameshot'
+# cask 'keybase'
+# cask 'monitorcontrol'
 cask 'obsidian'
-cask 'rectangle'
-cask 'secretive'
 
 # Browser corner
 cask 'firefox'
