@@ -5,7 +5,7 @@ brew 'git'
 brew 'jq'
 # brew 'neovim'
 # brew 'tmux'
-brew 'watch'
+# brew 'watch'
 # cask 'wezterm'
 
 # Better terminal tools
@@ -25,21 +25,21 @@ brew 'rpl'
 brew 'tig'
 brew 'tldr'
 brew 'tree'
-brew 'vale'
-brew 'watch'
+# brew 'vale'
+# brew 'watch'
 
 # Generally useful apps
 # cask '1password'
-cask 'alfred'
+# cask 'alfred'
 # cask 'flameshot'
 # cask 'keybase'
 # cask 'monitorcontrol'
-cask 'obsidian'
+# cask 'obsidian'
 
 # Browser corner
-cask 'firefox'
+# cask 'firefox'
 
 # Better fonts for dev
-tap "homebrew/cask-fonts"
-cask 'font-hasklig'
-cask 'font-symbols-only-nerd-font'
+# tap "homebrew/cask-fonts"
+# cask 'font-hasklig'
+# cask 'font-symbols-only-nerd-font'
