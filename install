@@ -75,7 +75,7 @@ symlink_starship() {
 
 symlink_aichat() {
   local src="$MSHELL_DIR/aichat_config.yaml"
-  local dest="$HOME/.config/aichat/config.yaml"
+  local dest="$HOME/Library/Application Support/aichat/config.yaml"
   mkdir -p "${dest:h}"
   [[ -L "$dest" ]] || ln -sf "$src" "$dest"
 }
