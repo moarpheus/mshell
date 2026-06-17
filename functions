@@ -152,3 +152,37 @@ function hsearch() {
     print -z "$selected"
   fi
 }
+
+function gai() {
+  if ! type aichat &>/dev/null; then
+    echo "aichat is not installed. Run: brew install aichat" >&2
+    return 1
+  fi
+
+  local diff
+  diff=$(git diff --cached)
+  if [[ -z "$diff" ]]; then
+    echo "No staged changes found. Stage changes with 'git add' first." >&2
+    return 1
+  fi
+
+  local message
+  message=$(echo "$diff" | aichat "Generate a single-line git commit message (no quotes) summarizing these changes. Use conventional commit format (feat:, fix:, refactor:, chore:, docs:). Be concise.")
+
+  if [[ $? -ne 0 || -z "$message" ]]; then
+    echo "Failed to generate commit message." >&2
+    return 1
+  fi
+
+  echo "Suggested commit message:"
+  echo "  $message"
+  echo ""
+  printf "Use this message? [y/n] "
+  read -r reply
+  if [[ "$reply" =~ ^[Yy]$ ]]; then
+    git commit -m "$message"
+  else
+    echo "Commit aborted."
+    return 0
+  fi
+}

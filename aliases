@@ -60,3 +60,8 @@ fi
 
 alias nwd='terminal-notifier -message "Task Complete"'
 alias tf='terraform'
+
+# AI tools
+if type aichat &>/dev/null; then
+  alias ai='aichat'
+fi
