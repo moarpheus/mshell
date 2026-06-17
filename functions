@@ -1,6 +1,5 @@
 # vim: ft=bash
 
-# Git functions
 function _master_branch() {
   if git rev-parse --quiet --verify master > /dev/null; then
     echo 'master'
@@ -49,7 +48,6 @@ function git_diff_fzf () {
     --preview-window=top:85% --bind "enter:execute:${ENTER_COMMAND}"
 }
 
-# Tmux Functions
 function tmux_create_or_attach(){
   session="$1"
   if ! $(tmux has-session -t "=$session" &>/dev/null)
@@ -69,7 +67,6 @@ function tmux_new_attach_to_session(){
   tmux new-session -s "${session}_${counter}" -t "${session}"
 }
 
-# Extra Useful Functions
 function file_composition {
   find . -type f | perl -n -e'/(\.\w+$)/ && print "$1\n"' | sort | uniq -c | sort -n
 }

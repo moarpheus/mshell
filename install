@@ -46,10 +46,6 @@ symlink_asdf_configs(){
   ln -s ~/.mshell/asdf/default-npm-packages ~/.default-npm-packages
 }
 
-symlink_configs(){
-  ln -s ~/.mshell/config/vale.ini ~/.vale.ini
-}
-
 main(){
   pushd $(dirname $0) > /dev/null
   install_dependencies
@@ -58,7 +54,6 @@ main(){
   symlink_gitignore
   symlink_asdf_configs
   source_custom
-  symlink_configs
   popd > /dev/null
 }
 

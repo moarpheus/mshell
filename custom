@@ -5,12 +5,10 @@ function source_if_present(){
 
 CONFIG_BASE=$HOME/.mshell
 
-# Load Customisations for all shells
 source_if_present "$CONFIG_BASE/env"
 source_if_present "$CONFIG_BASE/functions"
 source_if_present "$CONFIG_BASE/aliases"
 
-# Load Shell-specific customisations
 if [[ -n $BASH ]] ; then
   source_if_present "$CONFIG_BASE/bash/custom"
 elif [[ -n $ZSH_NAME ]] ; then

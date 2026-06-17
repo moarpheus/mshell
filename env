@@ -19,10 +19,8 @@ export FZF_DEFAULT_OPTS="
 --bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
 "
 
-# Add adshell/bin to the PATH
 export PATH=~/.mshell/bin:$PATH
 
-# Add brew sbin to PATH
 if type brew > /dev/null 2>&1 || [[ -e /usr/local/bin/brew ]] ; then
   export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 fi
@@ -31,12 +29,10 @@ if type brew >/dev/null 2>&1; then
   source $(brew --prefix asdf)/libexec/asdf.sh
 fi
 
-# Add GOBIN to PATH
 if [[ -d $HOME/go/bin ]]; then
   export PATH=$PATH:$HOME/go/bin
 fi
 
-# If GNU CoreUtils is installed, make them the default
 if type gls > /dev/null 2>&1; then
   PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"

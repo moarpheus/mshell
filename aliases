@@ -1,26 +1,20 @@
 # vim: ft=bash
-# Place any alias commands in here
-## Try to keep them available to all shells
 
-# Command Aliases
 alias psg='ps -ef|grep '
 alias ssh='TERM=xterm-256color ssh'
 alias sshp='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no'
 
-## ls aliases
 alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alF'
 alias lh='ls -alFh'
 
-## apt-get aliases
 alias sai='sudo apt-get install'
 alias sar='sudo apt-get remove'
 alias saar='sudo apt-get autoremove'
 alias sau='sudo apt-get update'
 alias saup='sudo apt-get upgrade'
 
-## Ruby aliases
 alias be='bundle exec'
 alias cucumber='bundle exec cucumber --color'
 alias guard='bundle exec guard'
@@ -31,7 +25,6 @@ alias serve='ruby -run -e httpd . -p 8080'
 alias rod='git diff --relative --name-only | grep _spec.rb | xargs bundle exec rspec'
 alias rof='bundle exec rspec --color --only-failures'
 
-## Git aliases
 alias g='git'
 alias ga='g a'
 alias gaa='g aa'
@@ -41,12 +34,10 @@ alias gd='g d'
 alias gl='g l'
 alias gst='g st'
 
-## Dev aliases
 alias fcomp='file_composition'
 alias mt='make test'
 alias cdr='cd $(git rev-parse --show-toplevel)'
 
-## tmux aliases
 alias tl='tmux attach -t "$(tmux list-sessions | fzf --no-preview --select-1 | cut -d':' -f1)"'
 alias tls='tmux ls'
 alias tm='tmux_create_or_attach'
@@ -55,18 +46,15 @@ alias tk='tmux kill-session -t'
 alias tmr='tmuxinator'
 alias tml='tmuxinator_list_and_start'
 
-## rsync aliases
 alias rsync-copy='rsync --verbose --progress --human-readable --compress --archive --hard-links --one-file-system'
 alias rsync-move='rsync-copy --remove-source-files'
 alias rsync-update='rsync-copy --update'
 
-## Super lazy-time update functions
 alias up-vim='git_update $HOME/.config/nvim'
 alias up-shell='git_update $HOME/.mshell'
 alias up-tmux='git_update $HOME/.tmux-config'
 alias up-all='up-vim && up-shell && up-tmux'
 
-# Docker Aliases
 alias d='docker'
 alias dbr='docker run --rm -it $(docker build -q .)'
 alias dc='docker-compose'
@@ -75,11 +63,9 @@ alias dcl='docker-compose logs -f --tail=100 '
 
 alias dsh="attach_shell_to_docker_container"
 
-# Kubernetes Aliases
 alias k='kubectl'
 alias mk='minikube'
 
-# Ansible Aliases
 alias anp='ansible-playbook'
 alias ang='ansible-galaxy'
 alias anv='ansible-vault'
@@ -93,14 +79,12 @@ if ( type bat &>/dev/null ) ; then
   alias cat='bat'
 fi
 
-# If exa is installed, use it for better ls
 if type exa &>/dev/null; then
   alias ls='exa'
 fi
 
 alias ncdu='ncdu -rr --color dark --exclude .git --exclude "node_modules"'
 
-# Misc Aliases
 if ( type nvim &>/dev/null) ; then
   alias v='nvim'
 else
