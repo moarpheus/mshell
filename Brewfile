@@ -6,7 +6,6 @@ brew 'jq'
 # brew 'neovim'
 # brew 'tmux'
 # brew 'watch'
-# cask 'wezterm'
 
 # Better terminal tools
 brew 'bat'

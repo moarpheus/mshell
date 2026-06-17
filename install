@@ -47,8 +47,6 @@ symlink_asdf_configs(){
 }
 
 symlink_configs(){
-  ln -s ~/.mshell/config/kitty ~/.config/
-  ln -s ~/.mshell/config/wezterm ~/.config/
   ln -s ~/.mshell/config/vale.ini ~/.vale.ini
 }
 
