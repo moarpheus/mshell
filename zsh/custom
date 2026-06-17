@@ -39,7 +39,7 @@ setopt MULTIOS
 setopt INTERACTIVECOMMENTS
 
 export HISTFILE=~/.mshell/working/zsh_history
-export HISTSIZE=100000
+export HISTSIZE=1000000
 export SAVEHIST=100000
 setopt HIST_VERIFY
 setopt SHARE_HISTORY
