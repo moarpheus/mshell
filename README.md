@@ -50,9 +50,6 @@ That's it. The install script handles everything:
 |----------|--------|
 | `Ctrl+B` | Backward word |
 | `Ctrl+F` | Forward word |
-| `Alt+Left` | Backward word |
-| `Alt+Right` | Forward word |
-| `Alt+.` | Insert last word from previous command |
 | `↑` | History substring search up |
 | `↓` | History substring search down |
 
