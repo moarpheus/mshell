@@ -60,7 +60,7 @@ That's it. The install script handles everything:
 
 ### fzf (Fuzzy Finder)
 
-fzf is active in file search, git operations, and anywhere you see the `∼` prompt:
+fzf is active in file search, git operations, and anywhere you see the `∼` prompt. These shortcuts work **inside an fzf session** (e.g., after `Ctrl+T`, `Ctrl+R`, or any fzf-powered command like `gd`, `g col`, etc.):
 
 | Shortcut | Action |
 |----------|--------|
@@ -72,6 +72,8 @@ fzf is active in file search, git operations, and anywhere you see the `∼` pro
 | `Ctrl+A` | Select all results |
 | `Ctrl+Y` | Copy selection to clipboard |
 | `Ctrl+E` | Open selection in vim |
+
+> 💡 These keys are fzf-internal bindings. They won't work at the regular shell prompt — you need to be inside an fzf picker first.
 
 ### Vim Mode
 
