@@ -1,6 +1,5 @@
 # vim: ft=bash
 export NERDFONT=1
-export ANDROID_HOME=/usr/local/Cellar/android-sdk/
 export FZF_DEFAULT_COMMAND='rg --files --ignore-file ~/.mshell/rgignore'
 export FZF_DEFAULT_OPTS="
 --layout=reverse
@@ -19,6 +18,8 @@ export FZF_DEFAULT_OPTS="
 --bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
 "
 
+export _ZO_DATA_DIR="$HOME/.mshell/working/zoxide"
+
 export PATH=~/.mshell/bin:$PATH
 
 if type brew > /dev/null 2>&1 || [[ -e /usr/local/bin/brew ]] ; then
@@ -26,10 +27,4 @@ if type brew > /dev/null 2>&1 || [[ -e /usr/local/bin/brew ]] ; then
 fi
 if [[ -d $HOME/go/bin ]]; then
   export PATH=$PATH:$HOME/go/bin
-fi
-
-if type gls > /dev/null 2>&1; then
-  PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-  MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-  alias ls='ls --color --group-directories-first'
 fi

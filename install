@@ -1,53 +1,118 @@
-#!/bin/sh
+#!/bin/zsh
+set -o pipefail
 
-append_to_file() {
-  local text="$1"
-  local file="$2"
+MSHELL_DIR="${0:A:h}"
+STEPS_OK=0
+STEPS_FAIL=0
 
-  if ! grep -Fsq "$text" "$file"; then
-    printf "\n%s\n" "$text" >> "$file"
+# --- Step Runner ---
+
+step() {
+  local name="$1"; shift
+  if "$@"; then
+    echo "✅ $name"
+    ((STEPS_OK++))
+  else
+    echo "❌ $name" >&2
+    ((STEPS_FAIL++))
   fi
+}
+
+# --- Steps ---
+
+install_homebrew() {
+  if type brew &>/dev/null; then
+    return 0
+  fi
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
 
 install_dependencies() {
-  if which brew >/dev/null; then
-    brew bundle --no-lock -v
-    echo
-    echo "Common dependencies installed."
-  else
-    echo "Brew not found- please install dependencies manually. See the README.md"
+  brew bundle --no-lock --file="$MSHELL_DIR/Brewfile"
+}
+
+clone_plugins() {
+  local plugins_file="$MSHELL_DIR/plugins.txt"
+  [[ -f "$plugins_file" ]] || return 1
+  local failed=0
+  while IFS= read -r url; do
+    [[ -z "$url" || "$url" == \#* ]] && continue
+    local name="${${url:t}%.git}"
+    local dest="$MSHELL_DIR/zsh/plugins/$name"
+    if [[ ! -d "$dest" ]]; then
+      git clone "$url" "$dest" 2>/dev/null || ((failed++))
+    fi
+  done < "$plugins_file"
+  return $failed
+}
+
+create_working_dir() {
+  mkdir -p "$MSHELL_DIR/working"
+}
+
+symlink_gitconfig() {
+  local git_config="[include]
+  path = ~/.mshell/gitconfig"
+  local target="$HOME/.gitconfig"
+
+  if [[ ! -f "$target" ]] || ! grep -Fsq "$git_config" "$target"; then
+    printf "\n%s\n" "$git_config" >> "$target"
   fi
 }
 
-append_git_config(){
-  git_config="[include]
-  path = ~/.mshell/gitconfig"
-  append_to_file "$git_config" $HOME/.gitconfig
+symlink_gitignore() {
+  local src="$MSHELL_DIR/gitignore"
+  local dest="$HOME/.gitignore_global"
+  [[ -L "$dest" ]] || ln -sf "$src" "$dest"
 }
 
-source_custom(){
-  source_cmd="source $HOME/.mshell/custom"
-
-  append_to_file "$source_cmd" $HOME/.bashrc
-  append_to_file "$source_cmd" $HOME/.zshrc
+symlink_starship() {
+  local src="$MSHELL_DIR/starship.toml"
+  local dest="$HOME/.config/starship.toml"
+  mkdir -p "${dest:h}"
+  [[ -L "$dest" ]] || ln -sf "$src" "$dest"
 }
 
-symlink_ctags_config(){
-  ln -s ~/.mshell/ctags ~/.ctags
+symlink_aichat() {
+  local src="$MSHELL_DIR/aichat_config.yaml"
+  local dest="$HOME/.config/aichat/config.yaml"
+  mkdir -p "${dest:h}"
+  [[ -L "$dest" ]] || ln -sf "$src" "$dest"
 }
 
-symlink_gitignore(){
-  ln -s ~/.mshell/gitignore_global ~/.gitignore_global
+download_iterm2_integration() {
+  local dest="$HOME/.iterm2_shell_integration.zsh"
+  if [[ ! -f "$dest" ]]; then
+    curl -fsSL https://iterm2.com/shell_integration/zsh -o "$dest"
+  fi
 }
 
-main(){
-  pushd $(dirname $0) > /dev/null
-  install_dependencies
-  symlink_ctags_config
-  append_git_config
-  symlink_gitignore
-  source_custom
-  popd > /dev/null
+setup_zshrc() {
+  local source_cmd="source \$HOME/.mshell/custom"
+  local target="$HOME/.zshrc"
+
+  [[ -f "$target" ]] || touch "$target"
+  if ! grep -Fsq "$source_cmd" "$target"; then
+    printf "\n%s\n" "$source_cmd" >> "$target"
+  fi
+}
+
+# --- Main ---
+
+main() {
+  step "Install Homebrew" install_homebrew
+  step "Install dependencies" install_dependencies
+  step "Clone plugins" clone_plugins
+  step "Create working directory" create_working_dir
+  step "Symlink gitconfig" symlink_gitconfig
+  step "Symlink gitignore" symlink_gitignore
+  step "Symlink starship config" symlink_starship
+  step "Symlink aichat config" symlink_aichat
+  step "Download iTerm2 integration" download_iterm2_integration
+  step "Setup .zshrc" setup_zshrc
+
+  echo ""
+  echo "Done! $STEPS_OK succeeded, $STEPS_FAIL failed."
 }
 
 main

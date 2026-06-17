@@ -1,0 +1,13 @@
+model: local:qwen2.5-coder
+clients:
+  - type: openai-compatible
+    name: local
+    api_base: http://localhost:1234/v1
+    api_key: null
+    models:
+      - name: qwen2.5-coder
+        max_input_tokens: 8192
+      - name: gemma-4-26b
+        max_input_tokens: 8192
+      - name: qwen3.6-27b
+        max_input_tokens: 8192

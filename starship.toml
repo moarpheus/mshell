@@ -1,0 +1,48 @@
+format = """
+$directory\
+$git_branch\
+$git_status\
+$kubernetes\
+$cmd_duration\
+$line_break\
+$character"""
+
+[directory]
+disabled = false
+truncation_length = 3
+truncate_to_repo = true
+
+[git_branch]
+disabled = false
+format = "[$branch]($style) "
+
+[git_status]
+disabled = false
+format = '([\[$all_status$ahead_behind\]]($style) )'
+
+[kubernetes]
+disabled = false
+format = '[$context](bold purple) '
+detect_files = []
+
+[cmd_duration]
+disabled = false
+min_time = 2_000
+format = "[$duration]($style) "
+
+[character]
+disabled = false
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+[nodejs]
+disabled = true
+
+[python]
+disabled = true
+
+[ruby]
+disabled = true
+
+[package]
+disabled = true
