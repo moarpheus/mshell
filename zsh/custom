@@ -39,13 +39,15 @@ setopt MULTIOS
 setopt INTERACTIVECOMMENTS
 
 export HISTFILE=~/.mshell/working/zsh_history
-export HISTSIZE=5000
-export SAVEHIST=5000
+export HISTSIZE=100000
+export SAVEHIST=100000
 setopt HIST_VERIFY
 setopt SHARE_HISTORY
 setopt INC_APPEND_HISTORY
+setopt APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
+setopt HIST_EXPIRE_DUPS_FIRST
 
 source "$PLUGINS/zsh-history-substring-search/zsh-history-substring-search.zsh"
 zmodload zsh/terminfo
