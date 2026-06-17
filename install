@@ -28,7 +28,7 @@ install_homebrew() {
 }
 
 install_dependencies() {
-  brew bundle --no-lock --file="$MSHELL_DIR/Brewfile"
+  brew bundle --file="$MSHELL_DIR/Brewfile"
 }
 
 clone_plugins() {
