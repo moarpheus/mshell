@@ -3,19 +3,15 @@
 setopt HIST_IGNORE_DUPS
 
 ADZSH="$HOME/.mshell/zsh"
-FUNCTIONS="$ADZSH/functions"
 PLUGINS="$ADZSH/plugins"
 
 if type direnv > /dev/null 2>&1; then eval "$(direnv hook zsh)"; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-fpath+=($FUNCTIONS $PLUGINS/zsh-completions/src $PLUGINS/zsh-adams-tmux-completions $ADZSH/prompts)
+fpath+=($PLUGINS/zsh-completions/src $PLUGINS/zsh-adams-tmux-completions)
 
-source $FUNCTIONS/prompt_parts
-autoload -Uz async && async
-autoload -U promptinit && promptinit
-prompt pure
+source "$PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 export CLICOLOR=1
 export LSCOLORS=Gxfxcxdxbxegedabagacad
@@ -41,8 +37,6 @@ setopt CDABLE_VARS
 setopt AUTO_NAME_DIRS
 setopt MULTIOS
 setopt INTERACTIVECOMMENTS
-
-source "$PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 export HISTFILE=~/.mshell/working/zsh_history
 export HISTSIZE=5000
@@ -158,3 +152,19 @@ compinit -i
 compdef d='docker'
 compdef g='git'
 compdef tmr='tmuxinator'
+
+# Modern prompt (Starship)
+if type starship &>/dev/null; then
+  eval "$(starship init zsh)"
+fi
+
+# Smart directory jumping (zoxide)
+if type zoxide &>/dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+
+# Auto-updater
+source "$ADZSH/auto_updater.zsh"
+
+# Project detection
+source "$ADZSH/project_detector.zsh"
