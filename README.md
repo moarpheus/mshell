@@ -242,7 +242,7 @@ Every 7 days, mshell checks for upstream updates on shell startup:
 | `up-vim` | Pull latest nvim config |
 | `up-shell` | Pull latest mshell config |
 | `up-all` | Update both vim and shell configs |
-| `update-plugins` | Update all zsh plugins from manifest |
+| `update_plugins` | Update all zsh plugins from manifest |
 
 ---
 
@@ -291,7 +291,7 @@ https://github.com/zsh-users/zsh-history-substring-search.git
 | Command | Action |
 |---------|--------|
 | `./install` | Clones any missing plugins |
-| `update-plugins` | Pulls latest for all plugins |
+| `update_plugins` | Pulls latest for all plugins |
 
 To add a plugin: append its git URL to `plugins.txt` and run `./install`.
 

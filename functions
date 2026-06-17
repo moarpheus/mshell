@@ -91,7 +91,7 @@ function test_24bit_colour {
   }'
 }
 
-function update-plugins() {
+function update_plugins() {
   local plugins_file="$HOME/.mshell/plugins.txt"
   [[ -f "$plugins_file" ]] || { echo "plugins.txt not found" >&2; return 1; }
 
