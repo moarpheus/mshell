@@ -9,22 +9,6 @@ alias la='ls -A'
 alias ll='ls -alF'
 alias lh='ls -alFh'
 
-alias sai='sudo apt-get install'
-alias sar='sudo apt-get remove'
-alias saar='sudo apt-get autoremove'
-alias sau='sudo apt-get update'
-alias saup='sudo apt-get upgrade'
-
-alias be='bundle exec'
-alias cucumber='bundle exec cucumber --color'
-alias guard='bundle exec guard'
-alias rackup='bundle exec rackup'
-alias rake='bundle exec rake'
-alias rspec='bundle exec rspec --color'
-alias serve='ruby -run -e httpd . -p 8080'
-alias rod='git diff --relative --name-only | grep _spec.rb | xargs bundle exec rspec'
-alias rof='bundle exec rspec --color --only-failures'
-
 alias g='git'
 alias ga='g a'
 alias gaa='g aa'
@@ -38,22 +22,13 @@ alias fcomp='file_composition'
 alias mt='make test'
 alias cdr='cd $(git rev-parse --show-toplevel)'
 
-alias tl='tmux attach -t "$(tmux list-sessions | fzf --no-preview --select-1 | cut -d':' -f1)"'
-alias tls='tmux ls'
-alias tm='tmux_create_or_attach'
-alias tma='tmux_new_attach_to_session'
-alias tk='tmux kill-session -t'
-alias tmr='tmuxinator'
-alias tml='tmuxinator_list_and_start'
-
 alias rsync-copy='rsync --verbose --progress --human-readable --compress --archive --hard-links --one-file-system'
 alias rsync-move='rsync-copy --remove-source-files'
 alias rsync-update='rsync-copy --update'
 
 alias up-vim='git_update $HOME/.config/nvim'
 alias up-shell='git_update $HOME/.mshell'
-alias up-tmux='git_update $HOME/.tmux-config'
-alias up-all='up-vim && up-shell && up-tmux'
+alias up-all='up-vim && up-shell'
 
 alias d='docker'
 alias dbr='docker run --rm -it $(docker build -q .)'
@@ -66,10 +41,6 @@ alias dsh="attach_shell_to_docker_container"
 alias k='kubectl'
 alias mk='minikube'
 
-alias anp='ansible-playbook'
-alias ang='ansible-galaxy'
-alias anv='ansible-vault'
-
 # Better CLI tools when available
 if ( type prettyping &>/dev/null ) ; then
   alias ping='prettyping'
@@ -77,10 +48,6 @@ fi
 
 if ( type bat &>/dev/null ) ; then
   alias cat='bat'
-fi
-
-if type exa &>/dev/null; then
-  alias ls='exa'
 fi
 
 alias ncdu='ncdu -rr --color dark --exclude .git --exclude "node_modules"'
@@ -91,9 +58,5 @@ else
   alias v='vim'
 fi
 
-alias vm='vagrant'
 alias nwd='terminal-notifier -message "Task Complete"'
 alias tf='terraform'
-
-# Remount SD card on OSX
-alias sdremount='sudo kextunload /System/Library/Extensions/AppleStorageDrivers.kext/Contents/PlugIns/AppleUSBCardReader.kext; sudo kextload /System/Library/Extensions/AppleStorageDrivers.kext/Contents/PlugIns/AppleUSBCardReader.kext'
