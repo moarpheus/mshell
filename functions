@@ -186,3 +186,11 @@ function gai() {
     return 0
   fi
 }
+
+function env() {
+  if [[ $# -gt 0 ]]; then
+    command env "$@"
+    return
+  fi
+  command env | sort | sed 's/=\(.*\)/=\x1b[36m\1\x1b[0m/' | column -t -s '=' | less -RFX
+}
