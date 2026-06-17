@@ -1,5 +1,6 @@
 # vim: ft=bash
 export NERDFONT=1
+export NERDFONT=2
 export FZF_DEFAULT_COMMAND='rg --files --ignore-file ~/.mshell/rgignore'
 export FZF_DEFAULT_OPTS="
 --layout=reverse

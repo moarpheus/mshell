@@ -5,7 +5,7 @@ MSHELL_DIR="${0:A:h}"
 STEPS_OK=0
 STEPS_FAIL=0
 
-# --- Step Runner ---
+# --- Step Runner --- TEST HERE
 
 step() {
   local name="$1"; shift
