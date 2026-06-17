@@ -18,6 +18,8 @@ export FZF_DEFAULT_OPTS="
 --bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
 "
 
+export _ZO_DATA_DIR="$HOME/.mshell/working/zoxide"
+
 export PATH=~/.mshell/bin:$PATH
 
 if type brew > /dev/null 2>&1 || [[ -e /usr/local/bin/brew ]] ; then

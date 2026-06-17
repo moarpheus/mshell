@@ -41,6 +41,16 @@ alias dsh="attach_shell_to_docker_container"
 alias k='kubectl'
 alias mk='minikube'
 
+# Modern directory listing (eza replaces exa/ls)
+if type eza &>/dev/null; then
+  alias ls='eza --color=always --group-directories-first'
+fi
+
+# Smart directory jumping (zoxide)
+if type zoxide &>/dev/null; then
+  alias cd='z'
+fi
+
 # Better CLI tools when available
 if ( type prettyping &>/dev/null ) ; then
   alias ping='prettyping'
