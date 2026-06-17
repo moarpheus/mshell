@@ -90,3 +90,65 @@ function test_24bit_colour {
     printf "\n";
   }'
 }
+
+function update-plugins() {
+  local plugins_file="$HOME/.mshell/plugins.txt"
+  [[ -f "$plugins_file" ]] || { echo "plugins.txt not found" >&2; return 1; }
+
+  local failed=0
+  local updated=0
+  while IFS= read -r url; do
+    [[ -z "$url" || "$url" == \#* ]] && continue
+    local name="${url:t:r}"
+    local dir="$HOME/.mshell/zsh/plugins/$name"
+    if [[ -d "$dir" ]]; then
+      echo "Updating $name..."
+      if git -C "$dir" pull --quiet 2>/dev/null; then
+        ((updated++))
+      else
+        echo "  ❌ Failed to update $name" >&2
+        ((failed++))
+      fi
+    else
+      echo "  ⚠️  $name not installed (run ./install)" >&2
+    fi
+  done < "$plugins_file"
+
+  echo "Plugins updated: $updated, failed: $failed"
+}
+
+function how() {
+  if ! type aichat &>/dev/null; then
+    echo "aichat is not installed. Run: brew install aichat" >&2
+    return 1
+  fi
+  if [[ -z "$*" ]]; then
+    echo "Usage: how <description of what you want to do>" >&2
+    return 1
+  fi
+  aichat --execute "$*"
+}
+
+function hsearch() {
+  if ! type aichat &>/dev/null; then
+    echo "aichat is not installed. Run: brew install aichat" >&2
+    return 1
+  fi
+  if [[ -z "$*" ]]; then
+    echo "Usage: hsearch <description of what you're looking for>" >&2
+    return 1
+  fi
+
+  local query="$*"
+  local selected
+  selected=$(fc -ln 1 | awk '!seen[$0]++' | \
+    fzf --tac --no-sort \
+        --query "$query" \
+        --preview "echo {}" \
+        --header "Search history: $query" \
+        --prompt "❯ ")
+
+  if [[ -n "$selected" ]]; then
+    print -z "$selected"
+  fi
+}
