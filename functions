@@ -48,25 +48,6 @@ function git_diff_fzf () {
     --preview-window=top:85% --bind "enter:execute:${ENTER_COMMAND}"
 }
 
-function tmux_create_or_attach(){
-  session="$1"
-  if ! $(tmux has-session -t "=$session" &>/dev/null)
-  then
-    tmux new -s "$session" -d
-  fi
-  tmux attach -t "$session"
-}
-
-function tmux_new_attach_to_session(){
-  session="$1"
-  counter=0
-  while (tmux has-session -t "${session}_${counter}") ; do
-    counter=$[$counter +1]
-    echo $counter
-  done
-  tmux new-session -s "${session}_${counter}" -t "${session}"
-}
-
 function file_composition {
   find . -type f | perl -n -e'/(\.\w+$)/ && print "$1\n"' | sort | uniq -c | sort -n
 }
@@ -108,15 +89,4 @@ function test_24bit_colour {
     }
     printf "\n";
   }'
-}
-
-function tmuxinator_list_and_start {
-  project=`tmuxinator list --newline | grep -v "tmuxinator projects" | fzf --no-preview`
-  if [[ -n $project ]]; then
-    tmuxinator start $project
-  fi
-}
-
-function detect_zoom_meeting() {
-  ps -ef | grep -Eq 'zoom.*\-key [0-9]+'
 }
