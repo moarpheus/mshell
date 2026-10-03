@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/moarpheus/mshell/compare/v1.2.0...v1.3.0) (2026-10-03)
+
+
+### Features
+
+* add duf disk usage viewer ([7483844](https://github.com/moarpheus/mshell/commit/748384455371f199fc73c9fefd79ed9a688926c4))
+
 # [1.2.0](https://github.com/moarpheus/mshell/compare/v1.1.0...v1.2.0) (2026-10-03)
 
 
