@@ -139,6 +139,7 @@ Every 7 days, mshell checks for upstream updates on shell startup:
 | Alias | Expands to |
 |-------|-----------|
 | `g` | `git` |
+| `lg` | `lazygit` (git TUI) |
 | `ga` | `git add` |
 | `gc` | `git commit` |
 | `gc-m` | `git commit -m` |
@@ -157,6 +158,23 @@ Every 7 days, mshell checks for upstream updates on shell startup:
 | `g l` | pretty log graph |
 | `g s` | status (short, with branch) |
 | `g yolo` | commit with `--no-verify` |
+
+### lazygit
+
+[lazygit](https://github.com/jesseduffield/lazygit) is a full-screen terminal UI for git. Run `lg` inside any repository to stage, commit, branch, rebase, and stash without typing individual git commands.
+
+| Key | Action |
+|-----|--------|
+| `?` | Show all keybindings for the current panel |
+| `Tab` | Cycle between panels |
+| `Space` | Stage or unstage the selected file, or pop a stash |
+| `a` | Stage or unstage everything |
+| `c` | Commit staged changes |
+| `P` | Push |
+| `p` | Pull |
+| `q` | Quit |
+
+For line-by-line staging, press `Enter` on a file in the Files panel, then `Space` on individual lines. Press `?` any time to see the full key list for the panel you are in.
 
 ---
 
@@ -249,7 +267,10 @@ Plugins are listed in `plugins.txt`, one git URL per line:
 https://github.com/zsh-users/zsh-completions.git
 https://github.com/zsh-users/zsh-syntax-highlighting.git
 https://github.com/zsh-users/zsh-history-substring-search.git
+https://github.com/zsh-users/zsh-autosuggestions.git
 ```
+
+The plugins give you richer completions, red/green syntax highlighting as you type, history search with the arrow keys, and greyed-out autosuggestions from history (accept with the right-arrow).
 
 | Command | Action |
 |---------|--------|
