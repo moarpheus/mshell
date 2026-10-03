@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/moarpheus/mshell/compare/v1.1.0...v1.2.0) (2026-10-03)
+
+
+### Features
+
+* add lazygit git TUI ([da05e24](https://github.com/moarpheus/mshell/commit/da05e24f5306cdd03a176472a9b3bd0e3bd9d0c4))
+
 # [1.1.0](https://github.com/moarpheus/mshell/compare/v1.0.0...v1.1.0) (2026-10-03)
 
 
