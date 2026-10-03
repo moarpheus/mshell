@@ -186,6 +186,7 @@ For line-by-line staging, press `Enter` on a file in the Files panel, then `Spac
 | `cat` | [bat](https://github.com/sharkdp/bat) | Syntax highlighting, line numbers, git diff |
 | `cd` | [zoxide](https://github.com/ajeetdsouza/zoxide) | Frecency-based smart jumping |
 | `ncdu` | [dust](https://github.com/bootandy/dust) | Fast, visual disk usage |
+| `df` | [duf](https://github.com/muesli/duf) | Clear per-mount disk free output |
 | `ping` | [prettyping](https://github.com/denilsonsa/prettyping) | Graphical ping output |
 | `diff` (git) | [delta](https://github.com/dandavison/delta) | Syntax-highlighted, side-by-side diffs |
 | `top` | [btop](https://github.com/aristocratos/btop) | Resource monitor |
@@ -212,6 +213,7 @@ For line-by-line staging, press `Enter` on a file in the Files panel, then `Spac
 |-------|---------|
 | `v` | `nvim` (falls back to `vim`) |
 | `cat` | `bat` |
+| `df` | `duf` |
 | `ping` | `prettyping` |
 | `ls` | `eza --color=always --group-directories-first` |
 | `cd` | `z` (zoxide) |

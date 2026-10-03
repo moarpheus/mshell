@@ -8,6 +8,7 @@ brew 'lazygit'
 # Better terminal tools
 brew 'bat'
 brew 'btop'
+brew 'duf'
 brew 'dust'
 brew 'eza'
 brew 'fd'
