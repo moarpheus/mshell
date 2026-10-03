@@ -150,6 +150,9 @@ compdef d='docker'
 compdef g='git'
 compdef tmr='tmuxinator'
 
+# Fish-like autosuggestions from history (accept with right-arrow)
+source "$PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
 # Modern prompt (Starship)
 if type starship &>/dev/null; then
   eval "$(starship init zsh)"
