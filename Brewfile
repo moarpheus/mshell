@@ -3,6 +3,7 @@ brew 'curl'
 brew 'fzf'
 brew 'git'
 brew 'jq'
+brew 'lazygit'
 
 # Better terminal tools
 brew 'bat'
