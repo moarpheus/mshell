@@ -1,0 +1,17 @@
+function source_if_present(){
+  local file="$1"
+  [[ -f $file ]] && source "$file"
+}
+
+CONFIG_BASE=$HOME/.mshell
+
+source_if_present "$CONFIG_BASE/env"
+source_if_present "$CONFIG_BASE/functions"
+source_if_present "$CONFIG_BASE/aliases"
+source_if_present "$CONFIG_BASE/zsh/custom"
+
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi

@@ -1,0 +1,56 @@
+name: release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    # Skip the release commit semantic-release pushes back, to avoid a loop.
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - name: Verify CI_TOKEN is set and valid
+        env:
+          CI_TOKEN: ${{ secrets.CI_TOKEN }}
+        run: |
+          if [ -z "$CI_TOKEN" ]; then
+            echo "::error::CI_TOKEN secret is empty. Set it with: gh secret set CI_TOKEN"
+            exit 1
+          fi
+          code=$(curl -sS -o /dev/null -w '%{http_code}' \
+            -H "Authorization: Bearer $CI_TOKEN" https://api.github.com/user)
+          if [ "$code" != "200" ]; then
+            echo "::error::CI_TOKEN is invalid or expired (GitHub API returned $code). Rotate the PAT and re-run gh secret set CI_TOKEN."
+            exit 1
+          fi
+          echo "CI_TOKEN authenticates successfully."
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Full history and tags are required for semantic-release to work out
+          # the next version. Persist the PAT in git config so the changelog
+          # push is authenticated and runs as a real user rather than the
+          # restricted GITHUB_TOKEN.
+          fetch-depth: 0
+          token: ${{ secrets.CI_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install semantic-release
+        run: npm install --no-save semantic-release @semantic-release/changelog @semantic-release/git
+
+      - name: Run semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.CI_TOKEN }}
+        run: npx semantic-release

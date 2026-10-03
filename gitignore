@@ -1,0 +1,22 @@
+.byebug_history
+.DS_Store
+.swp
+.swq
+
+log/
+logs/
+tags
+.tags
+.tags.lock
+.tags.temp
+tmp/
+
+# Kiro local config, never tracked in any repo
+.kiro/
+.kiro-workspace/
+*.kiro-workspace
+
+# Editor and IDE local config
+*.code-workspace
+.idea/
+.ruby-lsp/

@@ -1,0 +1,31 @@
+# vim: ft=bash
+export NERDFONT=1
+export NERDFONT=2
+export FZF_DEFAULT_COMMAND='rg --files --ignore-file ~/.mshell/rgignore'
+export FZF_DEFAULT_OPTS="
+--layout=reverse
+--info=inline
+--height=90%
+--multi
+--preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
+--prompt='∼ '
+--bind '?:toggle-preview'
+--bind 'shift-down:preview-down'
+--bind 'shift-up:preview-up'
+--bind 'pgdn:preview-page-down'
+--bind 'pgup:preview-page-up'
+--bind 'ctrl-a:select-all'
+--bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
+--bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
+"
+
+export _ZO_DATA_DIR="$HOME/.mshell/working/zoxide"
+
+export PATH=~/.mshell/bin:$PATH
+
+if type brew > /dev/null 2>&1 || [[ -e /usr/local/bin/brew ]] ; then
+  export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+fi
+if [[ -d $HOME/go/bin ]]; then
+  export PATH=$PATH:$HOME/go/bin
+fi
