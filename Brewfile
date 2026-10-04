@@ -26,5 +26,11 @@ brew 'aichat'
 brew 'starship'
 brew 'zoxide'
 
+# File manager (yazi) and its preview dependencies
+brew 'yazi'
+brew 'poppler'
+brew 'ffmpeg'
+brew 'sevenzip'
+
 # Fonts (Nerd Font required for Starship glyphs)
 cask 'font-meslo-lg-nerd-font'

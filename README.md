@@ -130,6 +130,24 @@ Every 7 days, mshell checks for upstream updates on shell startup:
 3. Updates via `git pull --rebase` on confirmation.
 4. Skips silently on decline or network failure.
 
+### File manager (yazi)
+
+[yazi](https://github.com/sxyazi/yazi) is a fast terminal file manager with previews. Run `y` to open it in the current directory. When you quit with `q`, your shell changes to the directory you ended up in; quit with `Q` to stay where you started.
+
+| Key | Action |
+|-----|--------|
+| `h` `j` `k` `l` | Move left, down, up, right (into or out of directories) |
+| `Enter` | Open the selected file |
+| `Space` | Select or deselect a file |
+| `y` `x` `p` | Yank (copy), cut, paste |
+| `d` `D` | Move to trash, delete permanently |
+| `a` `r` | Create a file or directory, rename |
+| `/` `n` `N` | Search, next match, previous match |
+| `.` | Toggle hidden files |
+| `q` `Q` | Quit (cd to current dir), quit (stay put) |
+
+Previews cover images, video thumbnails (ffmpeg), PDFs (poppler), archives (7-Zip), and JSON (jq). Press `~` inside yazi for the full key list.
+
 ---
 
 ## Git aliases
@@ -212,6 +230,7 @@ For line-by-line staging, press `Enter` on a file in the Files panel, then `Spac
 | Alias | Command |
 |-------|---------|
 | `v` | `nvim` (falls back to `vim`) |
+| `y` | `yazi` file manager (cd's to where you quit) |
 | `cat` | `bat` |
 | `df` | `duf` |
 | `ping` | `prettyping` |

@@ -65,6 +65,19 @@ function attach_shell_to_docker_container {
   docker exec -i -t $1 /bin/sh
 }
 
+# Launch yazi and cd into the directory you were in when you quit.
+# Quit with q to stay there, or Q to return to where you started.
+function y() {
+  local tmp
+  tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  local cwd
+  if cwd="$(command cat -- "$tmp")" && [[ -n "$cwd" && "$cwd" != "$PWD" ]]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
+
 function update_plugins() {
   local plugins_file="$HOME/.mshell/plugins.txt"
   [[ -f "$plugins_file" ]] || { echo "plugins.txt not found" >&2; return 1; }
