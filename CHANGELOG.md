@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/moarpheus/mshell/compare/v1.3.0...v1.4.0) (2026-10-04)
+
+
+### Features
+
+* add yazi terminal file manager ([f33515b](https://github.com/moarpheus/mshell/commit/f33515b9a76daa7ed8eeca52ecc590ba8f374db4))
+
 # [1.3.0](https://github.com/moarpheus/mshell/compare/v1.2.0...v1.3.0) (2026-10-03)
 
 
